@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cspell": "^9.7.0",
+    "markdownlint": "^0.40.0"
+  }
+}
