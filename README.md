@@ -27,6 +27,6 @@ You have to check that the calculation has converged to something reasonable.
 
 # Sessions
 1. [Session 1](docs/session_1/session-1.md)
-2. [Session 2](docs/symt.md)
+2. [Session 2](docs/session_2/session-2.md)
 3. [Session 3](docs/symt.md)
 4. [Session 4](docs/symt.md)
