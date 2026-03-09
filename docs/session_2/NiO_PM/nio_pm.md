@@ -24,13 +24,13 @@ Run `sumt -all` to generate the default configuration files.
 
 
 # Running atom
-([see session 1 for more info](# Atomic densities))
+([see session 1 for more info](../../session_1/fcc_Ni.md# Atomic densities))
 
 Just type `make`, to create `atomdens` in the main directory .
 
 
 # Running cub
-([see session 1 for more info](# Meshing with the k-points))
+([see session 1 for more info](../../session_1/fcc_Ni.md# Meshing with the k-points))
 
 This time we will use a coarse k-point mesh, because we want the calculations to be fast.
 Use a `5x5x5` k-point mesh (for the superlattice), with a shift of `1/2 1/2 1/2`. Also generate
@@ -39,7 +39,7 @@ the tetrahedra.
 Copy/link the `cub.k.5` to `spts`, `cub.t.5` to `tetra`.
 
 # Change some settings
-([see session 1 for more info](# The basics of the basis))
+([see session 1 for more info](../../session_1/fcc_Ni.md# The basics of the basis))
 
 Once again we will use the linear tetrahedron method for Brillouin zone integration.
 We want to use only negative tails. And maybe change some linearization flags? This time there
@@ -50,7 +50,7 @@ Copy the `length_scale` and `strain_matrix` files to the main calculation direct
 file.
 
 # Converge SCF
-([see session 1 for more info](# Running RSPt))
+([see session 1 for more info](../../session_1/fcc_Ni.md# Running RSPt))
 
 Converge the SCF cycle, check for errors and update the settings if needed
 (Fourier mesh, linearization flags, mixing, etc.). NOTE: this time we have
