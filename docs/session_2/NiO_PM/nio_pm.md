@@ -20,7 +20,7 @@ This file should look very familiar, the only big difference is that we now have
 atoms in the basis, Ni and O. Note that we use the same label "a" for both Ni and O,
 don't worry, RSPt won't think that they are the same atom, because the atomic numbers are different.
 
-Run `sumt -all` to generate the default configuration files.
+Run `symt -all` to generate the default configuration files.
 
 
 # Running atom
@@ -63,7 +63,9 @@ for our system. We do this by changing 2 flags in the `prnt_array`. Flag
 `65` tells RSPt to calculate the DOS, and flag `64` (in combination with `65`)
 calculates the pDOS. Change the flags and run one iteration of RSPt
 (advanced users can tell RSPt to stop after calculating the eigenvalues,
-if they want).
+if they want). If you change the file `dta/prnt_array`, remember to run `make data`
+in order to update the `data` file. If you modify the `data` directly there is nothing
+more to do. Just run 1 iteration of RSPt to generate the DOS and pDOS.
 
 ## Reading the files
 If everything went well, RSPt will have produced a couple of new files.
@@ -87,3 +89,19 @@ We will soon use a different way to calculate the DOS and pDOS.
 
 There is a method for calculating the electronic band structure using the LMTO basis only, but it is
 somewhat involved, and a bit limited. We will use a different way to calculate bands later.
+
+### Plotting using gnuplot
+`gnuplot` is a tool that can be used to plot data, somewhat easily. When you run gnuplot
+in the terminal your prompt will change and you can start plotting with gnuplot.
+```gnuplot
+p 'FILENAME' u 1:2 title 'TITLE' w l
+```
+The above command will read file `FILENAME` and take column 1 from that file, and use it for the x-values in our plot.
+The y-values will be read from column 2. The plot will be labeled `TITLE` and the points will be connected with straight lines.
+```gnuplot
+p 'FILENAME' u ($1-5):2 title 'TITLE' w lp
+```
+Will shift the x-axis, by taking the values in column 1 and subtracting 5 from them. The data points will be marked with markers and connected by straight lines.
+
+### Plotting using Python
+If you want to, feel free to use Python (or some other language) to create the plots.
