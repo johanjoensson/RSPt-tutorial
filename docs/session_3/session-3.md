@@ -1,5 +1,11 @@
 # Antiferromagnetic NiO
-If you haven't completed [this](../session_2/NiO_AFM/nio_afm.md) step from before, do so now.
+If you did this step in session 2, great. You can skip it now. If you started but
+didn't finish it, finish it now. If you didn't start it now, then do it now.
+
+- [AFM NiO](NiO_AFM/nio_afm.md)
 
 # LDA+U for AFM NiO
-[LDA+U](LDA+U/nio_ldau.md)
+The main idea of this whole tutorial session is to get to a stage where
+you can set up and run a LDA+U calculation. So, we start this monumental task now
+and hopefully finish it in session 4.
+- [LDA+U](LDA+U/nio_ldau.md)

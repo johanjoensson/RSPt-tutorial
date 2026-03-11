@@ -2,7 +2,8 @@
 We will start by doing a very simple calculation, with minimal changes to the input.
 We will not be doing any postprocessing, or fancy plotting. That comes later in the tutorial.
 
-Create a new folder for your RSPt calculation.
+Create a new folder for your RSPt calculation. This will be your main calculation folder, in this tutorial I
+will call it `CALCULATION_FOLDER`, you can call it whatever you want (something with fcc and Ni is probably good).
 
 ## Set up the geometry and initial configuration
 RSPt uses a program called `symt` in order to set up the geometry and initial configuration for the calculation.
@@ -10,6 +11,9 @@ symt assumes that it is run inside a folder called `sym`, so create that folder 
 
 Inside the sym folder, symt will read an input file called `symt.inp`, so lets create it now.
 
+```
+CALCULATION_FOLDER/sym/symt.inp
+```
 ```bash
 # Lattice constant in a.u.
 lengthscale
@@ -82,6 +86,16 @@ New files have been generated in the sym folder, of these `symt.out` is the most
 interesting one. It contains information about what symmetries symt was able to find
 and what euler angles it used. This is rather advanced stuff, so let's move on
 
+### Calculation folders
+Your main calculation folder should now contain a few new files and folders:
+```
+CALCULATION_FOLDER/
+                    atom/
+                    bin/
+                    bz/
+                    dta/
+                    sym/
+```
 
 # Atomic densities
 We need a decent starting guess for our DFT calculation.
@@ -100,6 +114,7 @@ This means generating a cubic superlattice, generating the kpoint mesh
 for the superlattice, and finally transforming the kpoints back onto the
 original lattice. The implementation in RSPt is not perfect, so it may fail in finding a good superlattice.
 In this case cub will not generate a kpoint mesh, and will ask you to change a matrix in an input file to the unit matrix.
+All the files for generating kpoints with `cub` are found in the `bz` folder.
 
 ## Files read by cub
 When we ran `symt -all` it generated a bunch of files for us. One of these is `cub.inp`, the input file read by cub.
@@ -345,8 +360,8 @@ In the output file, there is a section called "Energy parameters"
 ```
 The most important part is the `npr(mt) .ne. npr` column, this is a check to see
 if our LMTO basis functions have the correct number of nodes inside the MT or not.
-If there is a '*' anywhere in this column your calculation might be in trouble.
-To get rid of the '*' it is usually enough to change the linearization flag in the element file.
+If there is a _*_ anywhere in this column your calculation might be in trouble.
+To get rid of the _*_ it is usually enough to change the linearization flag in the element file.
 The flag is set for a specific l-quantum number, for a specific energy set, for a specific type.
 Check what element the type is, and change the linearization flag for the l-quantum number in the energy set e to -1 in the correct element file.
 
@@ -441,7 +456,7 @@ The Energy parameters will start showing problems from the second iteration. Che
 (Broyden mixing) does linear mixing for the first few (I think about 7) iterations, then it switches to the Broyden scheme. If you are unlucky, sometimes
 this switch is rather aggressive, and things go wrong. Therefore check iterations 7-10 for problems as well. If you have problems when broyden mixing turns on
 you can try reducing the mixing ratio, or you can erase the files used by the Broyden scheme, jacob1 and jacob2, in order to force RSPt to continue with
-linear mixing for a few more iterations (there might be a prnt`array flag to do exactly this, if you are brave/stupid).
+linear mixing for a few more iterations (there might be a prnt_array flag to do exactly this, if you are brave/stupid).
 
 So, in summary, the first 10 or so iterations are usually where things go wrong. So be vigilant in the beginning.
 
@@ -456,10 +471,10 @@ You can completely restart a RSPt run by deleting the files `pot`, `eparm`, `jac
 runs "rspt" 1e-15 200
 ```
 Since `rspt` only runs a single SCF iteration, and does not check convergence at all, there is a utility program called `runs`.
-This program takes the command used to run a single SCF iteration (usually "rspt", or "mpirun -n $SLURM_NTASKS rspt", ..., use the double quotes!!!), the fsq convergence limit you want
-as well as the maximum number of SCF iterations to run. runs will then run RSPt for you, until converged, maximum number of iterations reached, or sometimes crashed. runs will eat
-any error messages produced when running RSPt and put them in the file  `runs_errfile`. runs will also backup some files from the last SCF iteration by copying them and adding the "_last" suffix
-(usually pot_last, eparm_last, and out_last).
+This program takes the command used to run a single SCF iteration (usually `"rspt"`, or `"mpirun -n $SLURM_NTASKS rspt"`, ..., use the double quotes!!!), the fsq convergence limit you want
+as well as the maximum number of SCF iterations to run. `runs` will then run RSPt for you, until converged, maximum number of iterations reached, or sometimes crashed. runs will eat
+any error messages produced when running RSPt and put them in the file  `runs_errfile`. runs will also backup some files from the last SCF iteration by copying them and adding the "`_last`" suffix
+(usually `pot_last`, `eparm_last`, and `out_last`).
 
 runs is a very simplistic tool, but it does automate the SCF iterations and allows for some basic convergence check. It does not feature any type of error detection, so use it only when you are
 certain that your settings are reliable. runs also modifies the hist file when it ends the SCF run, only saving the last SCF run performed. I personally strongly dislike this.
