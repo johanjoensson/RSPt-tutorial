@@ -18,15 +18,8 @@ Beware: RSPt is not user friendly, nor is it particularly intuitive. You can eas
 Always check that your calculations make sense, RSPt calculations are usually good at converging.
 You have to check that the calculation has converged to something reasonable.
 
-## Steps
-1. Running a basic DFT calculation, FCC Ni.
-    - Setting up the geometry.
-    - Setting up the kpoint mesh.
-    - Generating an initial guess for electron  potential and density.
-    - Modifying the default configuration to something safe(r).
-
 # Sessions
 1. [Session 1](docs/session_1/session-1.md)
 2. [Session 2](docs/session_2/session-2.md)
-3. [Session 3](docs/symt.md)
-4. [Session 4](docs/symt.md)
+3. [Session 3](docs/session_3/session-3.md)
+4. [Session 4](docs/session_4/session-4.md)
