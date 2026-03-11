@@ -143,7 +143,8 @@ This file uses a bunch of input blocks to set everything up.
 `energy mesh` gives the energy range we will calculate the DOS/pDOS over (the Fermi energy is a 0).
 Our mesh will consist of 1001 points evenly spaced over the energy range -1 Ry to 1 Ry. The final number is a smearing parameter (not the Fermi smearing parameter), smaller values give smaller smearing, but too small smearing will give you crap output. Usually 0.010 is a good starting point.
 
-The spectrum block contains the data we want to calculate for plotting. `Dos` means DOS, `Pdos` means pDOS (orbitally resolved, spin resolved, etc.).
+The spectrum block contains the data we want to calculate for plotting. `Dos` means DOS, `Pdos` means pDOS (spin resolved, etc.). If we want to get the orbitally
+resolved pDOS, we need to specify the flag `Proj` in the spectrum block.
 
 The cluster blocks contains the sets of orbitals that we want to do the while Greens function thingy with.
 The first line in each cluster contains the number of orbitals in that cluster (veeeeeery rarely is this anything other than 1),
