@@ -47,7 +47,7 @@ Just type `make`, to create `atomdens` in the main directory. No need to change 
 ([see session 1 for more info](../../session_1/FCC_Ni/fcc_Ni.md#Meshing-with-the-k-points))
 
 This time we will use a coarse k-point mesh, because we want the calculations to be fast.
-Use a `3x3x5` k-point mesh (for the superlattice), with a shift of `1/2 1/2 1/2`. Also generate
+Use a `3x3x3` k-point mesh (for the superlattice), with a shift of `1/2 1/2 1/2`. Also generate
 the tetrahedra.
 
 Copy/link the `cub.k.3` to `spts`, `cub.t.3` to `tetra`.
