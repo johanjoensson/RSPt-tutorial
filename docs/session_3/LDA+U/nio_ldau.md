@@ -40,7 +40,7 @@ new self-energy). `delta_sig` is the convergence cutoff for the calculated self-
 should converge nicely, and 1e-4 is a rather easy target. For other solvers a larger `delta_sig` is probably needed.
 `max_it` is a maximum number of times the Fermi energy will be updated before we take a break and do some DFT stuff.
 `max_solver_it` is the maximum number of times we update the self-energy before the aforementioned DFT stuff break.
-The iteration numbers are not that important, but setting `max_it` to 999 and `max_solver_it` to 99 are usually good.
+The iteration numbers are not that important, but setting `max_it` to 999 and `max_solver_it` to 99 is usually good.
 
 The clusters now have some extra info. No 0 on the first line any more, because we want a Coulomb U!
 `UJ` means that we will specify the (Hubbard) U and (optionally) J parameters to use, `eV` means  that the
@@ -58,8 +58,11 @@ The manual has a very extensive section talking about the `green.inp` settings, 
 
 # Run SCF iterations
 Now, for each SCF cycle, RSPt will converge the LDA+U self-energy and then break. The self-energy is saved in the binary file `sig`. Unfortunately
-`runs` does not save the `sig` file after each iteration, so be careful not to delete it by mistake.
+`runs` does not save the `sig` file after each iteration, so be careful not to delete it by mistake. The file `dmft_hist`
+contains a summary of the self-energy self-consistency cycle (similar to `hist` for the DFT SCF), it lists the change in
+self-energy from the last solver iteration, the current estimate for Fermi energy (or, chemical potential),
+the number of electrons obtained with the current Fermi energy, and some more stuff.
 
 ## Plot dos
 After converging the LDA+U SCF cycles, modify the `green.inp` file to calculate the DOS/pDOS, and plot it.
-What has happened to the states near the Fermi energy (in particular the states we out a U on).
+What has happened to the states near the Fermi energy (in particular the states we put a U on).
