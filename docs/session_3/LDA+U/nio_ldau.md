@@ -1,5 +1,5 @@
 # Setup
-[AFM NiO](../../session_1/NiO_AFM/nio_afm.md)
+[AFM NiO](../NiO_AFM/nio_afm.md)
 
 Use the same setup as before.
 
