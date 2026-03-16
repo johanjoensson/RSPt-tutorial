@@ -7,8 +7,8 @@ If you have finished the LDA+U calculations, well done! There are of course many
 be done with RSPt. The below collection is just a few suggestions, if anything seems interesting, go ahead
 and have a look at that particular task.
 
-- (Tools for running RSPt)[tooling/tooling.md]
-- (Bandstructure or k-resolved spectral funcion)[bandstructure/bandstructure.md]
-- (Magnetic +U calculations with nonmagnetic DFT)[non_magnetic_dft_magnetism/symbrk.md]
-- (X-ray spectroscopy)[xas/spectroscopy.md]
-- (More on DMFT)[DMFT/dmft.md]
+- [Tools for running RSPt](tooling/tooling.md)
+- [Bandstructure or k-resolved spectral funcion](bandstructure/bandstructure.md)
+- [Magnetic +U calculations with nonmagnetic DFT](non_magnetic_dft_magnetism/symbrk.md)
+- [More on DMFT](DMFT/dmft.md)
+- [X-ray spectroscopy](xas/spectroscopy.md)
