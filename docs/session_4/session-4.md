@@ -8,7 +8,7 @@ be done with RSPt. The below collection is just a few suggestions, if anything s
 and have a look at that particular task.
 
 - [Tools for running RSPt](tooling/tooling.md)
-- [Bandstructure or k-resolved spectral funcion](bandstructure/bandstructure.md)
+- [Bandstructure or k-resolved spectral funcion](banstructure/bandstructure.md)
 - [Magnetic +U calculations with nonmagnetic DFT](non_magnetic_dft_magnetism/symbrk.md)
-- [More on DMFT](DMFT/dmft.md)
+- [More on DMFT](dmft/dmft.md)
 - [X-ray spectroscopy](xas/spectroscopy.md)
