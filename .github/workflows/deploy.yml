@@ -27,6 +27,12 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install Jupyter for Notebook Conversion
+        run: pip install --upgrade jupyter nbconvert
       - name: Build with Jekyll
         run: |
           bundle install
