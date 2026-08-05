@@ -1,0 +1,15 @@
+title: RSPt Tutorials
+description: Tutorials for performing DFT and DFT+DMFT calculations using the FPLMTO code RSPt.
+theme: "just-the-docs"
+
+color_scheme: "dark"
+
+url: ""
+baseurl: ""
+
+# Collections
+plugins:
+  - jekyll-jupyter-notebook
+  - jekyll-scholar
+
+math: mathjax3

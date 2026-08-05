@@ -1,0 +1,79 @@
+{% capture search_placeholder %}{% include search_placeholder_custom.html %}{% endcapture %}
+
+<div class="search" role="search" style="display: flex; align-items: center; justify-content: flex-start; position: relative;">
+  <div class="search-input-wrap" style="position: relative !important; width: 100%; max-width: 400px; height: 100%;">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="{{ search_placeholder | strip_html | strip }}" autocomplete="off">
+    <label for="search-input" class="search-label">
+      <span class="sr-only">{{ search_placeholder | strip_html | strip }}</span>
+      <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+    </label>
+  </div>
+  
+  <div style="margin-left: 1rem; z-index: 10;">
+    <button id="theme-toggle" style="background: transparent; border: 1px solid var(--theme-toggle-color, currentColor); color: var(--theme-toggle-color, currentColor); border-radius: 4px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">
+      <svg id="theme-icon-sun" style="display: none; width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg id="theme-icon-moon" style="display: none; width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+
+  <div id="search-results" class="search-results"></div>
+</div>
+
+<script>
+  let defaultTheme = "dark";
+  let currentTheme = localStorage.getItem("theme");
+
+  if (!currentTheme) {
+    currentTheme = defaultTheme;
+  }
+
+  function updateThemeIcons() {
+    let sunIcon = document.getElementById("theme-icon-sun");
+    let moonIcon = document.getElementById("theme-icon-moon");
+    if (sunIcon && moonIcon) {
+      if (currentTheme === "dark") {
+        sunIcon.style.display = "block";
+        moonIcon.style.display = "none";
+      } else {
+        sunIcon.style.display = "none";
+        moonIcon.style.display = "block";
+      }
+    }
+  }
+
+  function setTheme(theme) {
+    currentTheme = theme;
+    localStorage.setItem("theme", theme);
+    
+    /* Robustly replace the stylesheet href */
+    let cssFile = document.querySelector('link[href*="just-the-docs-"]');
+    if (cssFile) {
+      let currentHref = cssFile.getAttribute('href');
+      let newHref = currentHref.replace(/just-the-docs-.*\.css/, 'just-the-docs-' + theme + '.css');
+      cssFile.setAttribute('href', newHref);
+    }
+    
+    if (typeof jtd !== 'undefined' && jtd.setTheme) {
+      /* Just in case Just The Docs needs to do other internal state changes */
+      jtd.setTheme(theme);
+    }
+    
+    updateThemeIcons();
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    if (currentTheme !== defaultTheme) {
+      setTheme(currentTheme);
+    } else {
+      updateThemeIcons();
+    }
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+      if (currentTheme === "dark") {
+        setTheme("light");
+      } else {
+        setTheme("dark");
+      }
+    });
+  });
+</script>

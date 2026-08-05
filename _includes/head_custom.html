@@ -1,0 +1,14 @@
+<script>
+  /* Run early to prevent FOUC */
+  (function() {
+    let savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      let cssFile = document.querySelector('link[href*="just-the-docs-"]');
+      if (cssFile) {
+        let currentHref = cssFile.getAttribute('href');
+        let newHref = currentHref.replace(/just-the-docs-.*\.css/, 'just-the-docs-' + savedTheme + '.css');
+        cssFile.setAttribute('href', newHref);
+      }
+    }
+  })();
+</script>

@@ -1,0 +1,57 @@
+$color-scheme: light;
+$body-background-color: #faf9f5;
+$body-heading-color: #1a1a1a;
+$body-text-color: #2b2b2b;
+$link-color: #4276b6;
+$nav-child-link-color: #4276b6;
+$sidebar-color: #4276b6;
+$base-button-color: #eae6d1;
+$btn-primary-color: #ffcc00; // Yellow buttons
+$code-background-color: #f6f8fa;
+$table-background-color: #ffffff;
+$search-background-color: #ffffff;
+$search-result-preview-color: #5a5a5a;
+$border-color: #dcd8c3;
+
+:root {
+  --theme-toggle-color: #4276b6;
+}
+
+@import "./vendor/accessible-pygments/github-light";
+
+/* Overrides */
+.side-bar {
+  .site-title, .site-title:visited { color: #ffdb4d !important; }
+  
+  .nav-list-link, .nav-list-link:visited { 
+    color: rgba(255, 255, 255, 0.85) !important; 
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+  
+  .nav-list-link.active {
+    color: #4276b6 !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    box-shadow: inset 6px 0 0 #e6b800 !important; /* Slightly darkened yellow for edge definition */
+  }
+  
+  .nav-list-link:hover, .nav-list-link:focus {
+    color: #4276b6 !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    background-image: none !important;
+    box-shadow: inset 6px 0 0 #ffcc00 !important; /* Solid yellow on hover */
+  }
+  
+  .nav-list-expander { color: rgba(255, 255, 255, 0.85) !important; }
+  
+  .nav-list-link:hover + .nav-list-expander, 
+  .nav-list-link:focus + .nav-list-expander,
+  .nav-list-item.active > .nav-list-expander, 
+  .nav-list-expander:hover,
+  .nav-list-expander:focus { color: #4276b6 !important; }
+  
+  .site-footer { color: rgba(255, 255, 255, 0.7) !important; }
+  .site-footer a { color: #ffffff !important; text-decoration: underline; }
+}
+.btn.btn-primary { color: #1a1a1a !important; }
+.btn.btn-primary:hover, .btn.btn-primary:focus { color: #000000 !important; }

@@ -1,0 +1,56 @@
+$color-scheme: dark;
+$body-background-color: #0f1724;
+$body-heading-color: #f4f5f7;
+$body-text-color: #cdd3df;
+$link-color: #ffcc00;
+$nav-child-link-color: #9fb0c7;
+$sidebar-color: #162133;
+$base-button-color: #1e2d45;
+$btn-primary-color: #4276b6; // Blue buttons
+$code-background-color: #162133;
+$table-background-color: #162133;
+$search-background-color: #1e2d45;
+$search-result-preview-color: #9fb0c7;
+$border-color: #2b3d5b;
+
+:root {
+  --theme-toggle-color: #ffcc00;
+}
+
+@import "./vendor/accessible-pygments/github-dark";
+
+/* Overrides */
+.side-bar {
+  /* Use a lightened tint of the primary blue for contrast on dark navy */
+  .site-title, .site-title:visited { color: #6ba4e9 !important; } 
+  
+  .nav-list-link, .nav-list-link:visited {
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+
+  .nav-list-link.active {
+    color: #ffcc00 !important;
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    background-image: none !important;
+    box-shadow: inset 6px 0 0 #6ba4e9 !important; /* Lightened blue border to remain visible */
+  }
+  
+  .nav-list-link:hover, .nav-list-link:focus {
+    color: #ffcc00 !important;
+    background-color: rgba(0, 0, 0, 0.15) !important; 
+    background-image: none !important;
+    box-shadow: inset 6px 0 0 #4276b6 !important; /* Darker blue on hover */
+  }
+  
+  .nav-list-expander { color: rgba(255, 255, 255, 0.85) !important; }
+  
+  .nav-list-link:hover + .nav-list-expander, 
+  .nav-list-link:focus + .nav-list-expander,
+  .nav-list-item.active > .nav-list-expander, 
+  .nav-list-expander:hover,
+  .nav-list-expander:focus {
+    color: #ffcc00 !important;
+  }
+}
+.btn.btn-primary { color: #ffffff !important; }
+.btn.btn-primary:hover, .btn.btn-primary:focus { color: #ffffff !important; }
