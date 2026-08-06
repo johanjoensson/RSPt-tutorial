@@ -75,7 +75,7 @@ a bunch of information about the kpoint path we are using. Thankfully, at the en
 Also, there is now a block called mixing! This contains settings for how to update the self-energy,
 and also (optionally) the Fermi energy to use. For a band structure plot, only the Fermi energy value is important,
 since we are not updating any self-energies. Replace `EF` with the value of the Fermi energy of your calculation
-(`fermi energy` in the output file).
+(`fermi energy` in the `out` file, or `chemical potential` if doing a DFT+U/DMFT calculation).
 
 ## Plotting bands
 Run one iteration of RSPt, hopefully all went well and you get a bunch of files, such as `band.gpi`, `pband-Ni.gpi`.
